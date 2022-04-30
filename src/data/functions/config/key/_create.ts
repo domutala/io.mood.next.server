@@ -4,7 +4,7 @@ import { keys } from "../_test";
 
 /**
  * @author domutala
- * @description ajouter un nouvel event
+ * @description ajouter un nouvel next
  */
 export default async ({ config_id, key }: { config_id: string; key: Key }) => {
   const config = await functions.config.find({ id: config_id });

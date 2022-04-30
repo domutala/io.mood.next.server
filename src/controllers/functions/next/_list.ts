@@ -5,10 +5,11 @@ import services from "../../../services";
 
 export default async (req: Request, res: Response) => {
   try {
-    const event = await services.event.get({
-      id: req.query.id as string,
+    const users = await services.next.list({
+      access: req.query.access as string,
+      value: req.query.value as string,
     });
-    sender(req, res, { value: event });
+    sender(req, res, { value: users });
   } catch (error: any) {
     sender(req, res, { error });
   }

@@ -1,6 +1,6 @@
 import { getMongoRepository } from "typeorm";
 import { ObjectID } from "mongodb";
-import { Event } from "../../entities/Event";
+import { Next } from "../../entities/Next";
 
 /**
  * @author domutala
@@ -13,17 +13,17 @@ export default async ({ id }: { id?: string }) => {
     throw error;
   }
 
-  const event = await getMongoRepository(Event).findOne({
+  const next = await getMongoRepository(Next).findOne({
     where: { _id: { $eq: ObjectID(id) } },
   });
 
-  if (!event) {
+  if (!next) {
     const error = Error();
     error.name = "_employeeNotFound";
     throw error;
   }
 
-  await event.remove();
+  await next.remove();
 
-  return event;
+  return next;
 };

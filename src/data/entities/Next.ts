@@ -13,7 +13,7 @@ import {
  * @version 0.2.0
  */
 @Entity()
-export class Event extends BaseEntity {
+export class Next extends BaseEntity {
   @ObjectIdColumn()
   id!: ObjectID;
 

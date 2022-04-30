@@ -7,6 +7,6 @@ export default async ({
   id?: string;
   data: { [key: string]: any };
 }) => {
-  const event = await _data.functions.event.create({ id, data });
-  return event;
+  const next = await _data.functions.next.create({ id, data });
+  return next;
 };

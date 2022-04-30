@@ -5,9 +5,9 @@ import middlewares from "./middlewares";
 
 const router = express.Router();
 
-router.post("/create", [middlewares.is_login], functions.event.create);
+router.post("/create", [middlewares.is_login], functions.next.create);
 
-router.get("/get", functions.event.get);
-router.get("/list", functions.event.list);
+router.get("/get", functions.next.get);
+router.get("/list", functions.next.list);
 
 export default router;

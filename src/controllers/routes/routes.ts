@@ -3,7 +3,7 @@ import * as express from "express";
 import functions from "../functions";
 import user from "./_user";
 import file from "./_file";
-import event from "./_event";
+import next from "./_next";
 
 const router = express.Router();
 
@@ -18,6 +18,6 @@ router.post("/forget-password/step-3", functions.forget_password.step_3);
 
 router.use("/user", user);
 router.use("/file", file);
-router.use("/event", event);
+router.use("/next", next);
 
 export default router;

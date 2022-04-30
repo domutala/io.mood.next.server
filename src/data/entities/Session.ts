@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 
 /**
- * cette table contient les information de connection du event.
+ * cette table contient les information de connection du next.
  * @author domutala
  * @version 0.2.0
  */
@@ -22,7 +22,7 @@ export class Session extends BaseEntity {
   @Column({ type: "text", nullable: true })
   user?: string;
 
-  /** C'est la clé publique du event de la session */
+  /** C'est la clé publique du next de la session */
   @Column({ type: "text" })
   public_key!: string;
 

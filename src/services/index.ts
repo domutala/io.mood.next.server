@@ -1,6 +1,6 @@
 import session from "./session";
 import user from "./user";
 import file from "./file";
-import event from "./event";
+import next from "./next";
 
-export default { session, user, file, event };
+export default { session, user, file, next };

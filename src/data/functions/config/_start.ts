@@ -92,16 +92,16 @@ export default async () => {
       lock: true,
       placeholder: { fr: "Utilisateur" },
     },
-    event: {
-      table: "event",
+    next: {
+      table: "next",
       native: true,
       lock: true,
-      placeholder: { fr: "Event" },
+      placeholder: { fr: "Next" },
     },
   };
   const keys = {
     user: user_keys(),
-    event: event_keys(),
+    next: event_keys(),
   };
 
   for (const ckey of Object.keys(configs)) {

@@ -3,25 +3,25 @@ import { Request, Response } from "express";
 import sender from "../../utils/sender";
 import services from "../../../services";
 import controllers from "..";
-import { Event } from "src/data/entities/Event";
+import { Next } from "src/data/entities/Next";
 
 export default async (req: Request, res: Response) => {
   try {
-    let event: Event | undefined;
+    let next: Next | undefined;
 
     if (req.query.id) {
-      const e = await services.event.get({ id: req.query.id as string });
-      if (e) event = e.value;
+      const e = await services.next.get({ id: req.query.id as string });
+      if (e) next = e.value;
 
-      if (event && event.user !== req.session?.user) {
+      if (next && next.user !== req.session?.user) {
         return sender(req, res, { error: { text: "notAuthorized" } });
       }
     }
 
-    event = await services.event.create({ ...req.body });
+    next = await services.next.create({ ...req.body });
 
-    req.query.id = event.id.toString();
-    controllers.event.get(req, res);
+    req.query.id = next.id.toString();
+    controllers.next.get(req, res);
   } catch (error: any) {
     sender(req, res, { error });
   }
