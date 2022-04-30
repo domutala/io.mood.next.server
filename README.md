@@ -1,4 +1,4 @@
-# io.mood.auth.server
+# io.mood.nexts.server
 
 ## Build Setup
 
