@@ -5,7 +5,7 @@ import services from "../../../services";
 
 export default async (req: Request, res: Response) => {
   try {
-    const users = await services.client.list({
+    const users = await services.event.list({
       access: req.query.access as string,
       value: req.query.value as string,
     });

@@ -8,7 +8,8 @@
   "events": {},
   "watch": ["src/*"],
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "development",
+    "PORT": 6061
   },
   "ext": "ts,js,json"
 }

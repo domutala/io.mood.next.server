@@ -50,77 +50,34 @@ const user_keys = () => {
   return keys;
 };
 
-const client_keys = () => {
+const event_keys = () => {
   const keys: Key[] = [];
 
   keys.push({
-    index: "photo",
+    index: "date",
     native: true,
-    placeholder: { fr: "photo" },
-    props: { required: false },
-    type: "avatar",
-  });
-
-  keys.push({
-    index: "firstname",
-    native: true,
-    placeholder: { fr: "prénom" },
+    placeholder: { fr: "Date" },
     props: { required: true },
-    type: "text",
+    type: "date",
   });
+
   keys.push({
-    index: "lastname",
+    index: "description",
     native: true,
-    placeholder: { fr: "nom" },
+    placeholder: { fr: "Description" },
+    props: { required: false },
+    type: "longtext",
+  });
+
+  keys.push({
+    index: "photos",
+    native: true,
+    placeholder: { fr: "Photos" },
     props: { required: true },
-    type: "text",
-  });
-  keys.push({
-    index: "cin",
-    type: "text",
-    native: true,
-    placeholder: { fr: "numéro pièce d'identité" },
-    props: { required: false },
-    array: {},
-  });
-
-  keys.push({
-    index: "address",
-    native: true,
-    placeholder: { fr: "Adresse" },
-    props: { required: false },
-    type: "text",
-    array: {},
-  });
-  keys.push({
-    index: "phone",
-    native: true,
-    placeholder: { fr: "Téléphone" },
-    props: { required: false },
-    type: "phone",
-    array: {},
-  });
-  keys.push({
-    index: "mail",
-    native: true,
-    placeholder: { fr: "Email" },
-    props: { required: false },
-    type: "mail",
-    array: {},
-  });
-
-  keys.push({
-    index: "status",
-    type: "select",
-    placeholder: { fr: "effectif global" },
-    native: true,
-    props: {
-      required: true,
-      options: [
-        { text: "Simple", value: "simple" },
-        { text: "Prémium", value: "premium" },
-        { text: "Gold", value: "gold" },
-      ],
+    type: "file",
+    array: {
+      min_length: 1,
+      max_length: 5,
     },
   });
 
@@ -128,41 +85,37 @@ const client_keys = () => {
 };
 
 export default async () => {
-  // user
-  let config_user = await functions.config.find({ table: "user" });
-  if (!config_user) {
-    config_user = await functions.config.add({
+  const configs = {
+    user: {
       table: "user",
       native: true,
       lock: true,
       placeholder: { fr: "Utilisateur" },
-    });
-  }
-
-  const keys = user_keys();
-  for (const key of keys) {
-    await functions.config.key.create({
-      config_id: config_user.id.toString(),
-      key,
-    });
-  }
-
-  // client
-  let config_client = await functions.config.find({ table: "client" });
-  if (!config_client) {
-    config_client = await functions.config.add({
-      table: "client",
+    },
+    event: {
+      table: "event",
       native: true,
       lock: true,
-      placeholder: { fr: "Client" },
-    });
-  }
+      placeholder: { fr: "Event" },
+    },
+  };
+  const keys = {
+    user: user_keys(),
+    event: event_keys(),
+  };
 
-  const keys2 = client_keys();
-  for (const key of keys2) {
-    await functions.config.key.create({
-      config_id: config_client.id.toString(),
-      key,
-    });
+  for (const ckey of Object.keys(configs)) {
+    let config = await functions.config.find({ table: ckey });
+    if (!config) {
+      config = await functions.config.add(configs[ckey as "user"]);
+    }
+
+    const ckeys = keys[ckey as "user"];
+    for (const key of ckeys) {
+      await functions.config.key.create({
+        config_id: config.id.toString(),
+        key,
+      });
+    }
   }
 };

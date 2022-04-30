@@ -7,7 +7,7 @@ import controllers from "..";
 export default async (req: Request, res: Response) => {
   try {
     if (req.session?.user !== req.query.user && !req.session?._user?.super) {
-      sender(req, res, { error: { text: "notAuthorized" } });
+      return sender(req, res, { error: { text: "notAuthorized" } });
     }
 
     delete req.body.id;

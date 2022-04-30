@@ -13,12 +13,19 @@ import {
  * @version 0.2.0
  */
 @Entity()
-export class Client extends BaseEntity {
+export class Event extends BaseEntity {
   @ObjectIdColumn()
   id!: ObjectID;
 
   @Column()
-  data!: { [key: string]: any };
+  user!: string;
+
+  @Column()
+  data!: {
+    date: Date;
+    descriotion?: string;
+    photos: string[];
+  };
 
   @Column({ type: "datetime" })
   @CreateDateColumn()

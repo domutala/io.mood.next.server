@@ -5,9 +5,7 @@ import forget_password from "./forget_password";
 
 import user from "./user";
 import file from "./file";
-import client from "./client";
-
-import admin from "./admin";
+import event from "./event";
 
 export default {
   init_session,
@@ -16,7 +14,5 @@ export default {
   forget_password,
   user,
   file,
-  client,
-
-  admin,
+  event,
 };

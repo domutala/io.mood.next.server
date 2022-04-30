@@ -31,6 +31,7 @@ const keys: {
 } = {
   checkbox: (v: boolean) => v,
   text: (v: string) => v,
+  longtext: (v: string) => keys.text(v),
   number: (v: number) => utils.number.formater(v),
 
   mail: (v: string) => v,

@@ -7,6 +7,6 @@ export default async ({
   id?: string;
   data: { [key: string]: any };
 }) => {
-  const client = await _data.functions.client.create({ id, data });
-  return client;
+  const event = await _data.functions.event.create({ id, data });
+  return event;
 };

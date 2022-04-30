@@ -4,7 +4,7 @@ import { keys } from "../_test";
 
 /**
  * @author domutala
- * @description ajouter un nouvel client
+ * @description ajouter un nouvel event
  */
 export default async ({ config_id, key }: { config_id: string; key: Key }) => {
   const config = await functions.config.find({ id: config_id });
@@ -40,7 +40,7 @@ export default async ({ config_id, key }: { config_id: string; key: Key }) => {
     }
 
     if (
-      !["undefined", "boolean"].includes(typeof key.array.max_length) ||
+      !["undefined", "number"].includes(typeof key.array.max_length) ||
       !["undefined", "number"].includes(typeof key.props.min_length)
     ) {
       const error = Error();

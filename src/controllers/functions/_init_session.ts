@@ -17,8 +17,10 @@ export default async (req: Request, res: Response) => {
     const token = jwtoken.sign(
       { id: session.id },
       Buffer.from(utils.rsa.get().private_key, "base64"),
-      { header: { typ: "JWT", alg: "HS256" }, expiresIn: 60 * 60 * 24 }
+      { header: { typ: "JWT", alg: "HS256" } }
     );
+
+    // expiresIn: 60 * 60 * 24
 
     req.session = session;
 

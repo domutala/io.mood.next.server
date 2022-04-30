@@ -87,6 +87,7 @@ export const keys: {
 
     return true;
   },
+  longtext: (param: Key) => keys.text(param),
   number: (param: Key) => {
     if (!["number", "undefined"].includes(typeof param.value)) return false;
     if (param.props.required && typeof param.value !== "number") return false;

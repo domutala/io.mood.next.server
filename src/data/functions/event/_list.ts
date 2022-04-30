@@ -1,5 +1,5 @@
 import { getMongoRepository } from "typeorm";
-import { Client } from "../../entities/Client";
+import { Event } from "../../entities/Event";
 
 /**
  * @author domutala
@@ -42,7 +42,7 @@ export default async ({
     ]
   );
 
-  const a = await getMongoRepository(Client).aggregate(aggreagate).toArray();
+  const a = await getMongoRepository(Event).aggregate(aggreagate).toArray();
   if (a.length && a[0].array) employees = a[0].array;
 
   return employees;

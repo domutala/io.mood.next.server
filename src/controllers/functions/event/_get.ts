@@ -2,15 +2,13 @@ import { Request, Response } from "express";
 
 import sender from "../../utils/sender";
 import services from "../../../services";
-import controllers from "..";
 
 export default async (req: Request, res: Response) => {
   try {
-    delete req.body.id;
-    const user = await services.user.add({ ...req.body });
-
-    req.query.id = user.id.toString();
-    controllers.user.get(req, res);
+    const event = await services.event.get({
+      id: req.query.id as string,
+    });
+    sender(req, res, { value: event });
   } catch (error: any) {
     sender(req, res, { error });
   }

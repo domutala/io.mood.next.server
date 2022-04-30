@@ -1,6 +1,6 @@
 import { ConnectionOptions } from "typeorm";
 
-const database_name = "sinnov";
+const database_name = "nexts";
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 const DB_URL = `mongodb+srv://${username}:${password}@cluster0.fpqe5.mongodb.net/${database_name}?retryWrites=true&w=majority`;

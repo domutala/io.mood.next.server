@@ -1,7 +1,7 @@
 import * as express from "express";
 
 import middlewares from "./middlewares";
-import routes from "./_routes";
+import routes from "./routes";
 
 export const init = async (App: express.Express) => {
   const router = express.Router();

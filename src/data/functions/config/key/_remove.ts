@@ -2,7 +2,7 @@ import functions from "../..";
 
 /**
  * @author domutala
- * @description ajouter un nouvel client
+ * @description ajouter un nouvel event
  */
 export default async ({
   config_id,

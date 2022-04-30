@@ -7,6 +7,6 @@ export default async ({
   access?: string;
   value?: string;
 }) => {
-  const employees = await data.functions.client.list({ access, value });
+  const employees = await data.functions.event.list({ access, value });
   return employees;
 };
