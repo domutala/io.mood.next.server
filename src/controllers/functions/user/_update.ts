@@ -6,7 +6,7 @@ import controllers from "..";
 
 export default async (req: Request, res: Response) => {
   try {
-    if (req.session?.user !== req.query.user && !req.session?._user?.super) {
+    if (req.session?.user !== req.query.user) {
       return sender(req, res, { error: { text: "notAuthorized" } });
     }
 
