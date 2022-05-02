@@ -1,4 +1,5 @@
 import { Next } from "../../entities/Next";
+import { User } from "../../entities/User";
 import functions from "..";
 
 /**
@@ -8,9 +9,11 @@ import functions from "..";
 export default async ({
   id,
   data,
+  user,
 }: {
   id?: string;
   data: { [key: string]: any };
+  user: User;
 }) => {
   const config = await functions.config.find({ table: "next" });
   if (!config) {
@@ -29,13 +32,14 @@ export default async ({
 
   if (!next) {
     next = new Next();
-    next.data = { date: new Date(), photos: [] };
+    next.data = { date: new Date(), files: [] };
   }
 
   for (const key of Object.keys(data)) {
     next.data[key as "date"] = data[key];
   }
 
+  next.user = user.id.toString();
   await next.save();
 
   return next;

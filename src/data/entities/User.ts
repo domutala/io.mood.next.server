@@ -25,19 +25,17 @@ export class User extends BaseEntity {
     mail: string;
     username?: string;
     password?: string;
-    blocked?: boolean;
-    phone?: string;
-
-    // access
-    admin: "write" | "read" | null;
-    leave: "write" | "read" | null;
-    effectif: "write" | "read" | null;
-
     [key: string]: any;
   };
 
+  @Column({ type: "string", nullable: true })
+  uid?: string;
+
   @Column({ type: "boolean", default: false })
-  super?: boolean;
+  blocked?: boolean;
+
+  @Column({ type: "boolean", default: false })
+  certificy?: boolean;
 
   @Column({ type: "datetime" })
   @CreateDateColumn()

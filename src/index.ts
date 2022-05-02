@@ -14,6 +14,9 @@ import * as controllers from "./controllers";
       if (process.env.PUBLIC_KEY) {
         process.env.PUBLIC_KEY = process.env.PUBLIC_KEY.replace(/\\n/gi, "\n");
       }
+
+      const conf = require("../firebase.json");
+      process.env.FIREBASE_CONFIG = JSON.stringify(conf);
     }
 
     await data.init();

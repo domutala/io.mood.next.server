@@ -23,8 +23,8 @@ export class Next extends BaseEntity {
   @Column()
   data!: {
     date: Date;
-    descriotion?: string;
-    photos: string[];
+    text?: string;
+    files: string[];
   };
 
   @Column({ type: "datetime" })

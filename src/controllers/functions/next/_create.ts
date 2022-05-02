@@ -18,7 +18,12 @@ export default async (req: Request, res: Response) => {
       }
     }
 
-    next = await services.next.create({ ...req.body });
+    delete req.body.data.id;
+    next = await services.next.create({
+      id: req.query.id as string,
+      data: req.body.data,
+      user: req.session?._user as any,
+    });
 
     req.query.id = next.id.toString();
     controllers.next.get(req, res);

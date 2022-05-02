@@ -10,6 +10,7 @@ const router = express.Router();
 router.post("/init-session", functions.init_session);
 
 router.post("/login/email-and-password", functions.login.email_and_password);
+router.post("/login/credential", functions.login.credential);
 router.post("/logout", functions.logout);
 
 router.post("/forget-password/step-1", functions.forget_password.step_1);

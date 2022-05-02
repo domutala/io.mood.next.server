@@ -26,13 +26,6 @@ const user_keys = () => {
     type: "password",
   });
   keys.push({
-    index: "blocked",
-    native: false,
-    placeholder: { fr: "bloquer" },
-    props: { required: false },
-    type: "checkbox",
-  });
-  keys.push({
     index: "mail",
     native: false,
     placeholder: { fr: "Email" },
@@ -43,7 +36,7 @@ const user_keys = () => {
     index: "username",
     native: false,
     placeholder: { fr: "Nom d'utilisateur" },
-    props: { required: true },
+    props: { required: false },
     type: "text",
   });
 
@@ -62,15 +55,15 @@ const event_keys = () => {
   });
 
   keys.push({
-    index: "description",
+    index: "text",
     native: true,
-    placeholder: { fr: "Description" },
+    placeholder: { fr: "Légende" },
     props: { required: false },
     type: "longtext",
   });
 
   keys.push({
-    index: "photos",
+    index: "files",
     native: true,
     placeholder: { fr: "Photos" },
     props: { required: true },

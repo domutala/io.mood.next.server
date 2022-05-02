@@ -4,7 +4,6 @@ import password from "./_password";
 import blocked from "./_block";
 import find from "./_find";
 import find_or_faild from "./_find_or_faild";
-import list from "./_list";
 import remove from "./_remove";
 
 export default {
@@ -14,6 +13,5 @@ export default {
   blocked,
   find,
   find_or_faild,
-  list,
   remove,
 };

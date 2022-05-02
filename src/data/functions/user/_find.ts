@@ -13,13 +13,15 @@ export default async ({
   mail,
   username,
   phone,
+  uid,
 }: {
   id?: string;
   mail?: string;
   username?: string;
   phone?: string;
+  uid?: string;
 }) => {
-  if (!id && !mail) {
+  if (!id && !mail && !username && !uid) {
     const error = Error();
     error.name = "_invalidData";
     throw error;
@@ -38,6 +40,7 @@ export default async ({
   if (phone) where.$or.push({ "data.phone": { $eq: phone } });
   if (mail) where.$or.push({ "data.mail": { $eq: mail } });
   if (username) where.$or.push({ "data.username": { $eq: username } });
+  if (uid) where.$or.push({ uid: { $eq: uid } });
 
   const user = await getMongoRepository(User).findOne({ where });
 
